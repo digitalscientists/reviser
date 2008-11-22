@@ -2,7 +2,7 @@ var DS = {
 	Reviser:function(cfg) {
 		/* initialization */
 		// don't call it a callBack, ive been here for...
-		this.beforeSaveCallBack = cfg.beforeSave || function(){return false};
+		this.beforeSaveCallBack = cfg.beforeSave || function(html){return html;};
 		this.afterSaveCallBack  = cfg.afterSave || function(){return false};
 		// the elem we are editing
 		this.editorElement 			= $(cfg.elm); 
@@ -82,7 +82,7 @@ var DS = {
 		};
 		// Kill editing and send callbacks with elems innerHtml
 		this.save = function(){
-			editor.beforeSaveCallBack(editor.editorElement.html())
+			editor.editorElement.html(editor.beforeSaveCallBack(editor.editorElement.html()));
 			editor.setElementToNonEditable();
 			// send afterSave with elems innerHtml
 			editor.afterSaveCallBack(editor.editorElement.html())
