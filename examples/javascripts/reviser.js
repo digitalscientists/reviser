@@ -48,6 +48,9 @@ var DS = {
 			<a href="#" class="reviser_btn" id="strikethroughSelection" alt="Text Strike">strike</a>\
 			<a href="#" class="reviser_btn" id="underlineSelection" alt="Text Under">underline</a>\
 			<a href="#" class="reviser_btn" id="insertImage" alt="Insert Image">image</a>\
+			<a href="#" class="reviser_btn" id="blockquoteSelection" alt="Insert Block Quote">block quote</a>\
+			<a href="#" class="reviser_btn" id="insertOrderedList" alt="Insert Ordered List">ordered list</a>\
+			<a href="#" class="reviser_btn" id="insertUnorderedList" alt="Insert Ordered List">unordered list</a>\
 			<a href="#" class="reviser_btn" id="createLink" alt="Insert Link">link</a>\
 			<a href="#" class="reviser_btn" id="save" alt="Save">save</a>\
 			<a href="#" class="reviser_btn" id="revert" alt="Save">cancel</a>\
