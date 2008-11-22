@@ -74,35 +74,35 @@ var DS = {
 	Commands:{
 		createLink:function() {
 			url = this.needInput("What url? (Use http://)");
-			this.exec('createLink',url);
+			return this.exec('createLink',url);
 		},
 		boldSelection: function() {
 			this.exec('bold', null);
 		},
 		underlineSelection: function() {
-			this.exec('underline', null);
+			return this.exec('underline', null);
 		},
 		italicSelection: function() {
-			this.exec('italic', null);
+			return this.exec('italic', null);
 		},
 		strikethroughSelection: function() {
-			this.exec('strikethrough', null);
+			return this.exec('strikethrough', null);
 		},
 		blockquoteSelection: function() {
-			this.exec('blockquote', null);
+			return this.exec('blockquote', null);
 		},
 		colorSelection: function(color) {
-			this.exec('forecolor', color);
+			return this.exec('forecolor', color);
 		},
 		insertOrderedList: function() {
-			this.exec('insertorderedlist', null);
+			return this.exec('insertorderedlist', null);
 		},
 		insertUnorderedList: function() {
-			this.exec('insertunorderedlist', null);
+			return this.exec('insertunorderedlist', null);
 		},
 		insertImage: function() {
 			url = this.needInput("What url? (Use http://)");
-			this.exec('insertImage', url);
+			return this.exec('insertImage', url);
 		},
 		insertHTML: function(html) {
 	 		if ($.browser.msie) {
@@ -111,7 +111,7 @@ var DS = {
 		     range.collapse(false);
 		     range.select();
 		   } else {
-		     this.exec('insertHTML', html);
+		     return this.exec('insertHTML', html);
 		   }
 		},
 		needInput:function(msg) {
