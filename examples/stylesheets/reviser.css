@@ -1,0 +1,25 @@
+#left{
+	margin:1em;
+	padding:5px;
+	width:45%;
+}
+#right{
+	margin:1em;
+	padding:5px;
+	width:45%;
+}
+.reviser{
+	border:1px dotted #000;
+}
+.reviser_menu{
+	background:#ddd;
+	padding:3px;
+	border:1px dotted #000;
+	border-bottom:none;
+}
+.reviser_menu a {
+	color:#000;
+	text-decoration:none;
+	background:#eee;
+	padding:3px;
+}
