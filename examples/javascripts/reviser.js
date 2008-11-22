@@ -50,7 +50,7 @@ var DS = {
 			<a href="#" class="reviser_btn" id="insertImage" alt="Insert Image">image</a>\
 			<a href="#" class="reviser_btn" id="createLink" alt="Insert Link">link</a>\
 			<a href="#" class="reviser_btn" id="save" alt="Save">save</a>\
-			<a href="#" class="reviser_btn" id="revert" alt="Save">revert</a>\
+			<a href="#" class="reviser_btn" id="revert" alt="Save">cancel</a>\
 		</div>');
 		this.bindMenu = function(){
 			var scope = this;
