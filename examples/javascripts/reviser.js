@@ -30,11 +30,11 @@ var DS = {
 		};
 		// kill the menu and re-bind
 		this.setElementToNonEditable = function(){
-			var menu = $('#'+this.editorElement[0].id + '_reviser');
+			//var menu = $('#'+this.editorElement[0].id + '_reviser');
 			/*menu.slideToggle('medium',function(){
 				menu.remove();
 			});*/
-			menu.remove();
+			this.menu.remove();
 			this.editorElement.attr('contenteditable',false);
 			$(this.editorElement).click(function(){
 				this.editor = new DS.Reviser(this);
