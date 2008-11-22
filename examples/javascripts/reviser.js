@@ -73,7 +73,7 @@ var DS = {
 	},
 	Commands:{
 		createLink:function() {
-			url = this.getInput("What url? (Use http://)");
+			url = this.needInput("What url? (Use http://)");
 			this.exec('createLink',url);
 		},
 		boldSelection: function() {
@@ -101,7 +101,7 @@ var DS = {
 			this.exec('insertunorderedlist', null);
 		},
 		insertImage: function() {
-			url = this.getInput("What url? (Use http://)");
+			url = this.needInput("What url? (Use http://)");
 			this.exec('insertImage', url);
 		},
 		insertHTML: function(html) {
@@ -114,7 +114,7 @@ var DS = {
 		     this.exec('insertHTML', html);
 		   }
 		},
-		getInput:function(msg) {
+		needInput:function(msg) {
 			var resp = prompt(msg);
 			if (resp == "") {
 				this.getInput(msg);
