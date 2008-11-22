@@ -2,13 +2,14 @@ var DS = {
 	Reviser:function(cfg) {
 		/* initialization */
 		// assigning callback(s)
-		this.afterSaveCallBack = cfg.afterSave || function(){return false};
+		this.beforeSaveCallBack = cfg.beforeSave || function(){return false};
+		this.afterSaveCallBack  = cfg.afterSave || function(){return false};
 		// the elem we are editing
-		this.editorElement = $(cfg.elm); 
+		this.editorElement 			= $(cfg.elm); 
 		// save the content for revert
-		this.contentBackup = this.editorElement.html(); 
+		this.contentBackup 			= this.editorElement.html(); 
 		// create a new Menu and pass it an editor instance
-		this.menu = new DS.Menu(this); 
+		this.menu 							= new DS.Menu(this); 
 		/*-------- Editor Core ---------------*/
 		this.appendMenuToElement = function() {
 			var coords = this.editorElement.offset();
@@ -24,6 +25,7 @@ var DS = {
 			//this.menu.slideToggle('medium');
 			this.menu.show();
 		};
+		
 		// get rid of the click and start editing
 		this.setElementToEditable = function(){
 			this.editorElement.unbind('click'); 
@@ -70,7 +72,7 @@ var DS = {
 		// Bind that trick
 		this.bindMenu = function(){
 			// Assign scope to Menu
-			var scope = this;
+			var scope 	= this;
 			$('.reviser_btn',menu).each(function(){
 				$(this).click(function(){
 					// Methods bound to dom elems but scoped to Menu 
@@ -78,8 +80,9 @@ var DS = {
 				});
 			});
 		};
-		// Kill editing and send afterSave with elems innerHtml
+		// Kill editing and send callbacks with elems innerHtml
 		this.save = function(){
+			editor.beforeSaveCallBack(editor.editorElement.html())
 			editor.setElementToNonEditable();
 			// send afterSave with elems innerHtml
 			editor.afterSaveCallBack(editor.editorElement.html())

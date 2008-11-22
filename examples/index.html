@@ -24,8 +24,11 @@
 			$('.reviser').click(function(){
 				this.editor = new DS.Reviser({
 					elm:this,
+					beforeSave:function(html){
+						console.log("Before Save");
+					},
 					afterSave:function(html){
-						alert('saved');
+						console.log(html);
 					}
 				});
 			});
