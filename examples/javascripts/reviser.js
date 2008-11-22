@@ -1,7 +1,7 @@
 var DS = {
 	Reviser:function(cfg) {
 		/* initialization */
-		// assigning callback(s)
+		// don't call it a callBack, ive been here for...
 		this.beforeSaveCallBack = cfg.beforeSave || function(){return false};
 		this.afterSaveCallBack  = cfg.afterSave || function(){return false};
 		// the elem we are editing
