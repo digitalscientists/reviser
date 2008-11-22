@@ -39,7 +39,7 @@ var DS = {
 			$(this.editorElement).click(function(){
 				this.editor = new DS.Reviser(this);
 			});
-			return true;
+			return false;
 		};
 		/*------------------------------------*/
 		
