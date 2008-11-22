@@ -1,8 +1,9 @@
 var DS = {
-	Reviser:function(el) {
+	Reviser:function(cfg) {
 		/* initialization */
+		this.afterSaveCallBack = cfg.afterSave || function(){return false};
 		// the elem we are editing
-		this.editorElement = $(el); 
+		this.editorElement = $(cfg.elm); 
 		// save the content for revert
 		this.contentBackup = this.editorElement.html(); 
 		// create a new Menu and pass it an editor instance
@@ -80,11 +81,7 @@ var DS = {
 		// Just a hook for now. Callback should come from cfg.
 		this.save = function(){
 			editor.setElementToNonEditable();
-			if ($.browser.msie) {
-				console.log(editor.editorElement.html());
-			}else{
-				alert('If you used a decent browser, this is where you could see the output in your console.');
-			}
+			editor.afterSaveCallBack(editor.editorElement.html())
 		};
 		// Don't like it, revert it.
 		this.revert = function(){

@@ -22,7 +22,12 @@
 		<script type="text/javascript" charset="utf-8">
 		$(document).ready(function(){
 			$('.reviser').click(function(){
-				this.editor = new DS.Reviser(this);
+				this.editor = new DS.Reviser({
+					elm:this,
+					afterSave:function(html){
+						alert('saved');
+					}
+				});
 			});
 		});
 		</script>
