@@ -80,12 +80,17 @@ var DS = {
 		// Just a hook for now. Callback should come from cfg.
 		this.save = function(){
 			editor.setElementToNonEditable();
-			console.log(editor.editorElement.html());
+			if ($.browser.msie) {
+				console.log(editor.editorElement.html());
+			}else{
+				alert('If you used a decent browser, this is where you could see the output in your console.');
+			}
 		};
 		// Don't like it, revert it.
 		this.revert = function(){
-			editor.setElementToNonEditable();
 			editor.editorElement.html(editor.contentBackup);
+			editor.setElementToNonEditable();
+			return false;
 		};
 		// bind that trick, get 'em
 		this.bindMenu();
