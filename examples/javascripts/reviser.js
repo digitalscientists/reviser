@@ -67,14 +67,13 @@ var DS = {
 		this.revert = function(){
 			editor.setElementToNonEditable();
 			editor.editorElement.html(editor.contentBackup);
-			console.log(editor.editorElement.html());
 		};
 		this.bindMenu();
 		return menu;
 	},
 	Commands:{
 		createLink:function() {
-			url = prompt("What url?");
+			url = this.getInput("What url? (Use http://)");
 			this.exec('createLink',url);
 		},
 		boldSelection: function() {
@@ -102,7 +101,7 @@ var DS = {
 			this.exec('insertunorderedlist', null);
 		},
 		insertImage: function() {
-			url = prompt("What url?");
+			url = this.getInput("What url? (Use http://)");
 			this.exec('insertImage', url);
 		},
 		insertHTML: function(html) {
@@ -115,8 +114,15 @@ var DS = {
 		     this.exec('insertHTML', html);
 		   }
 		},
+		getInput:function(msg) {
+			var resp = prompt(msg);
+			if (resp == "") {
+				this.getInput(msg);
+			}else{
+				return resp;
+			}
+		},
 		exec:function(fn,val){
-			console.log(this);
 			document.execCommand(fn,false,val);
 			return false;
 		}
