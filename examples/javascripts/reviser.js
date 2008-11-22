@@ -6,6 +6,7 @@ var DS = {
 		this.afterSaveCallBack  = cfg.afterSave || function(){return false};
 		// the elem we are editing
 		this.editorElement 			= $(cfg.elm); 
+		this.cfg 								= cfg;
 		// save the content for revert
 		this.contentBackup 			= this.editorElement.html(); 
 		// create a new Menu and pass it an editor instance
@@ -34,14 +35,13 @@ var DS = {
 		};
 		// kill the menu and re-bind
 		this.setElementToNonEditable = function(){
-			//var menu = $('#'+this.editorElement[0].id + '_reviser');
 			/*menu.slideToggle('medium',function(){
 				menu.remove();
 			});*/
 			this.menu.remove();
 			this.editorElement.attr('contenteditable',false);
 			$(this.editorElement).click(function(){
-				this.editor = new DS.Reviser(this);
+				this.editor = new DS.Reviser(this.editor.cfg);
 			});
 			return false;
 		};
@@ -82,6 +82,7 @@ var DS = {
 		};
 		// Kill editing and send callbacks with elems innerHtml
 		this.save = function(){
+			// pre-process through beforeSave
 			editor.editorElement.html(editor.beforeSaveCallBack(editor.editorElement.html()));
 			editor.setElementToNonEditable();
 			// send afterSave with elems innerHtml
