@@ -1,6 +1,7 @@
 var DS = {
 	Reviser:function(cfg) {
 		/* initialization */
+		// assigning callback(s)
 		this.afterSaveCallBack = cfg.afterSave || function(){return false};
 		// the elem we are editing
 		this.editorElement = $(cfg.elm); 
@@ -72,15 +73,15 @@ var DS = {
 			var scope = this;
 			$('.reviser_btn',menu).each(function(){
 				$(this).click(function(){
-					// Methods bound to dom elems but scoped
-					// to Menu 
+					// Methods bound to dom elems but scoped to Menu 
 					scope[this.id].call(scope);
 				});
 			});
 		};
-		// Just a hook for now. Callback should come from cfg.
+		// Kill editing and send afterSave with elems innerHtml
 		this.save = function(){
 			editor.setElementToNonEditable();
+			// send afterSave with elems innerHtml
 			editor.afterSaveCallBack(editor.editorElement.html())
 		};
 		// Don't like it, revert it.
@@ -89,7 +90,7 @@ var DS = {
 			editor.setElementToNonEditable();
 			return false;
 		};
-		// bind that trick, get 'em
+		// bind that trick
 		this.bindMenu();
 		return menu;
 	},
